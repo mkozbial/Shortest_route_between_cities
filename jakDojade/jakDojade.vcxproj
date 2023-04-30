@@ -128,14 +128,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bfs.cpp" />
+    <ClCompile Include="Kolejka.h" />
     <ClCompile Include="Mapa.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Miasto.cpp" />
     <ClCompile Include="Wektor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bfs.h" />
     <ClInclude Include="Mapa.h" />
+    <ClInclude Include="Miasto.h" />
     <ClInclude Include="punkt.h" />
-    <ClInclude Include="string.h" />
+    <ClInclude Include="String.h" />
+    <ClInclude Include="Wektor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

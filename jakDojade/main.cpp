@@ -1,3 +1,4 @@
+#define _ALLOW_RTCc_IN_STL
 #include <iostream>
 #include "Mapa.h"
 
@@ -13,6 +14,11 @@ int main()
 	system("cls");
 	mapaMiast->wypiszMape();
 	mapaMiast->znajdzMiasta();
+	mapaMiast->wypiszMiasta();
+
+	
+
+    return 0;
 
 	return 0;
 }

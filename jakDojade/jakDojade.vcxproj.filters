@@ -18,13 +18,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Wektor.cpp">
-      <Filter>Pliki źródłowe\Wektor</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="Mapa.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Miasto.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Wektor.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Bfs.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Kolejka.h">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,7 +44,16 @@
     <ClInclude Include="punkt.h">
       <Filter>Pliki źródłowe</Filter>
     </ClInclude>
-    <ClInclude Include="string.h">
+    <ClInclude Include="String.h">
+      <Filter>Pliki źródłowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Miasto.h">
+      <Filter>Pliki źródłowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Wektor.h">
+      <Filter>Pliki źródłowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Bfs.h">
       <Filter>Pliki źródłowe</Filter>
     </ClInclude>
   </ItemGroup>
