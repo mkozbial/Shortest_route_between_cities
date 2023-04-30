@@ -30,9 +30,6 @@
     <ClCompile Include="Wektor.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Bfs.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="Kolejka.h">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
@@ -53,7 +50,7 @@
     <ClInclude Include="Wektor.h">
       <Filter>Pliki źródłowe</Filter>
     </ClInclude>
-    <ClInclude Include="Bfs.h">
+    <ClInclude Include="BFS.h">
       <Filter>Pliki źródłowe</Filter>
     </ClInclude>
   </ItemGroup>

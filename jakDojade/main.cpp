@@ -14,11 +14,11 @@ int main()
 	system("cls");
 	mapaMiast->wypiszMape();
 	mapaMiast->znajdzMiasta();
+	mapaMiast->znajdzSasiadow();
 	mapaMiast->wypiszMiasta();
 
-	
 
-    return 0;
+
 
 	return 0;
 }

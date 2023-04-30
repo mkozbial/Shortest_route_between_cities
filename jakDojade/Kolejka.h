@@ -1,11 +1,12 @@
 #pragma once
+#include "punkt.h"
 
 class Kolejka {
 private:
     struct Node {
-        int data;
+        punkt data;
         Node* next;
-        Node(int val) : data(val), next(nullptr) {}
+        Node(punkt val) : data(val), next(nullptr) {}
     };
 
     Node* frontNode;
@@ -15,7 +16,7 @@ private:
 public:
     Kolejka() : frontNode(nullptr), endNode(nullptr), size(0) {}
 
-    void enqueue(int value) {
+    void enqueue(punkt value) {
         Node* newNode = new Node(value);
         if (isEmpty()) {
             frontNode = endNode = newNode;
@@ -37,11 +38,11 @@ public:
         size--;
     }
 
-    int front() {
+    punkt front() {
         return frontNode->data;
     }
 
-    int rear() {
+    punkt rear() {
         return endNode->data;
     }
 
