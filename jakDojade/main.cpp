@@ -1,6 +1,7 @@
 #define _ALLOW_RTCc_IN_STL
 #include <iostream>
 #include "Mapa.h"
+#include "Dijkstra.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ int main()
 	mapaMiast->znajdzMiasta();
 	mapaMiast->znajdzSasiadow();
 	mapaMiast->wypiszMiasta();
-
+	dijkstra(mapaMiast->miasta, 0, 1);
 
 
 

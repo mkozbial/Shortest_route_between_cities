@@ -38,14 +38,6 @@ void Wektor::pop_back() {
     }
 }
 
-//Miasto Wektor::operator[](int index) {
-//    return miasta[index];
-//}
-
-//const Miasto& Wektor::operator[](int index) const {
-//    return miasta[index];
-//}
-
 int Wektor::getSize() const {
     return liczbaMiast;
 }
@@ -58,30 +50,13 @@ void Wektor::clear() {
     liczbaMiast = 0;
 }
 
-//Wektor& Wektor::operator=(const Wektor& other) {
-//    if (this != &other) {
-//        delete[] miasta;
-//        liczbaMiast = other.liczbaMiast;
-//        pojemnosc = other.pojemnosc;
-//        miasta = new Miasto[pojemnosc];
-//        for (int i = 0; i < liczbaMiast; i++) {
-//            miasta[i] = other.miasta[i];
-//        }
-//        sasiedzi = other.sasiedzi;
-//    }
-//    return *this;
-//}
-//
-//void Wektor::dodajSasiada(const Miasto& m, int odleglosc) {
-//    sasiedzi.add(m, odleglosc); // add the new neighbor to the end of the list
-//}
-//
-//void Wektor::usunSasiada(const Miasto& m) {
-//    for (int i = 0; i < sasiedzi.getSize(); i++) {
-//        if (sasiedzi.getMiasto(i).getNazwa() == m.getNazwa()) {
-//            sasiedzi.remove(i); // remove the neighbor from the list
-//            break;
-//        }
-//    }
-//}
+int Wektor::findIndex(punkt p) const {
+    for (int i = 0; i < liczbaMiast; i++) {
+        if (miasta[i].getWspolrzedne().getX() == p.x && miasta[i].getWspolrzedne().getY() == p.y) {
+            return i;
+        }
+    }
+    return -1; // indicates city not found
+}
+
  

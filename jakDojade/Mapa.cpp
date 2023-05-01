@@ -209,6 +209,7 @@ void Mapa::bfs(int w, int h, int startX, int startY, int idx) {
 					} else if (is_valid(x, y) && mapa[y][x] == '*' && !(y == startY && x == startX)) {
 						/*miasta[idx]->sasiedzi->add(nazwa(x, y), p.dystans);*/
 						/*cout << nazwa(x, y).getString() << " -> " << p.dystans << " ";*/
+
 						miasta.miasta[idx].sasiedzi.add(nazwa(x, y), p.dystans);
 					}
 				}

@@ -25,14 +25,24 @@ public:
         this->size = 0;
     }
 
-    void add(String miasto, int distance) {
-        Node* newNode = new Node(miasto, distance);
+    void add(String miasto, int dystans) {
+        Node* newNode = new Node(miasto, dystans);
         if (head == nullptr) {
             head = newNode;
         }
         else {
             Node* curr = head;
             while (curr->next != nullptr) {
+                if (curr->miasto == miasto)
+                {
+                    if (curr->dystans > dystans) {
+                        curr->dystans = dystans;
+                    }
+                    else {
+                        return;
+                    }
+                    
+                }
                 curr = curr->next;
             }
             curr->next = newNode;
@@ -61,8 +71,17 @@ public:
     }
 
     String getMiasto(int index) {
+        if (head == nullptr) {
+            // handle empty list
+            return "";
+        }
+
         Node* curr = head;
         for (int i = 0; i < index; i++) {
+            if (curr->next == nullptr) {
+                // handle index out of range
+                return "";
+            }
             curr = curr->next;
         }
         return curr->miasto;

@@ -19,14 +19,3 @@ String Miasto::getNazwa() const {
 punkt Miasto::getWspolrzedne() const {
 	return wspolrzedne;
 }
-
-LinkedList Miasto::getSasiedzi() const {
-	return sasiedzi;
-}
-
-//void Miasto::dodajSasiada(const Miasto& m, int odleglosc) {
-//	sasiedzi.add(m, odleglosc);
-//}
-void Miasto::dodajSasiada(String m, int odleglosc) {
-	sasiedzi.add(m, odleglosc);
-}

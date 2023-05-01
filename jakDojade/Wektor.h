@@ -2,9 +2,6 @@
 #include "Miasto.h"
 
 class Wektor {
-private:
-
-
 public:
     Miasto* miasta;
     int liczbaMiast;
@@ -20,6 +17,7 @@ public:
     bool isEmpty() const;
     void clear();
     Wektor& operator=(const Wektor& other);
+    int findIndex(punkt p) const;
     //void dodajSasiada(const Miasto& m, int odleglosc);
     //void usunSasiada(const Miasto& m);
     //void wyswietlSasiadow() const;
