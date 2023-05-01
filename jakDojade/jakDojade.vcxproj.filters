@@ -56,8 +56,5 @@
     <ClInclude Include="Dijkstra.h">
       <Filter>Pliki źródłowe</Filter>
     </ClInclude>
-    <ClInclude Include="KolejkaInt.h">
-      <Filter>Pliki źródłowe</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

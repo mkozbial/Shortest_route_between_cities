@@ -7,15 +7,19 @@ using namespace std;
 
 class Miasto {
 private:
+
 	String nazwa;
 	punkt wspolrzedne;
 
 public:
-	LinkedList sasiedzi;
+
+	Lista sasiedzi;
 	Miasto();
 	Miasto(String nazwa, punkt wspolrzedne);
+
 	String getNazwa() const;
 	punkt getWspolrzedne() const;
-	LinkedList getSasiedzi() const;
+	Lista getSasiedzi() const;
+
 	void dodajSasiada(const String m, int odleglosc);
 };

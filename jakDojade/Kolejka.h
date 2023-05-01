@@ -3,54 +3,61 @@
 
 class Kolejka {
 private:
+
     struct Node {
         punkt data;
         Node* next;
         Node(punkt val) : data(val), next(nullptr) {}
     };
 
-    Node* frontNode;
-    Node* endNode;
+    Node* przedniNode;
+    Node* koncowyNode;
     int size;
 
 public:
-    Kolejka() : frontNode(nullptr), endNode(nullptr), size(0) {}
 
-    void enqueue(punkt value) {
-        Node* newNode = new Node(value);
-        if (isEmpty()) {
-            frontNode = endNode = newNode;
+    Kolejka() : przedniNode(nullptr), koncowyNode(nullptr), size(0) {}
+
+    void enqueue(punkt wartosc) {
+
+        Node* newNode = new Node(wartosc);
+
+        if (czyPusty()) {
+            przedniNode = koncowyNode = newNode;
         }
         else {
-            endNode->next = newNode;
-            endNode = newNode;
+
+            koncowyNode->next = newNode;
+            koncowyNode = newNode;
         }
         size++;
     }
 
     void dequeue() {
-        if (isEmpty()) {
+
+        if (czyPusty()) {
             return;
         }
-        Node* temp = frontNode;
-        frontNode = frontNode->next;
+
+        Node* temp = przedniNode;
+        przedniNode = przedniNode->next;
         delete temp;
         size--;
     }
 
-    punkt front() {
-        return frontNode->data;
+    punkt przedni() {
+        return przedniNode->data;
     }
 
-    punkt rear() {
-        return endNode->data;
+    punkt koncowy() {
+        return koncowyNode->data;
     }
 
-    int getSize() {
+    int getRozmiar() {
         return size;
     }
 
-    bool isEmpty() {
-        return frontNode == nullptr;
+    bool czyPusty() {
+        return przedniNode == nullptr;
     }
 };
