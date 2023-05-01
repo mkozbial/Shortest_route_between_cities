@@ -58,14 +58,14 @@ void Mapa::znajdzMiasta() {
 
 void Mapa::wypiszMiasta() {
 	for (int i = 0; i < miasta.getSize(); i++) {
-		cout << miasta[i].getNazwa().getString() << endl;
+		cout << miasta.miasta[i].getNazwa().getString() << endl;
 	}
 
 }
 
 void Mapa::znajdzSasiadow() {
 	for (int i = 0; i < miasta.getSize(); i++) {
-		bfs(w, h, miasta[i].getWspolrzedne().getX(), miasta[i].getWspolrzedne().getY());
+		bfs(w, h, miasta.miasta[i].getWspolrzedne().getX(), miasta.miasta[i].getWspolrzedne().getY(), i);
 	}
 }
 
@@ -175,7 +175,7 @@ bool Mapa::is_star(int x, int y) {
 	return mapa[y][x] == '*';
 }
 
-void Mapa::bfs(int w, int h, int startX, int startY) {
+void Mapa::bfs(int w, int h, int startX, int startY, int idx) {
 	bool** visited;
 	visited = new bool* [h];
 	for (int i = 0; i < h; i++) {
@@ -207,16 +207,19 @@ void Mapa::bfs(int w, int h, int startX, int startY) {
 						visited[y][x] = true;
 						kolejka.enqueue({ x, y, p.dystans + 1});
 					} else if (is_valid(x, y) && mapa[y][x] == '*' && !(y == startY && x == startX)) {
-						cout << nazwa(x, y).getString() << "-> dystans: " << p.dystans << " ";
+						/*miasta[idx]->sasiedzi->add(nazwa(x, y), p.dystans);*/
+						/*cout << nazwa(x, y).getString() << " -> " << p.dystans << " ";*/
+						miasta.miasta[idx].sasiedzi.add(nazwa(x, y), p.dystans);
 					}
 				}
 			}
 			
 		}
-
+		
 	}
+	cout << nazwa(startX, startY).getString() << " ->";
+	miasta.miasta[idx].sasiedzi.printList();
 	cout << endl;
-
 
 	for (int i = 0; i < h; i++) {
 		delete[] visited[i];

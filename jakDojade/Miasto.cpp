@@ -9,6 +9,7 @@ Miasto::Miasto() {
 Miasto::Miasto(String nazwa, punkt wspolrzedne) {
 	this->nazwa = nazwa;
 	this->wspolrzedne = wspolrzedne;
+	this->sasiedzi = sasiedzi;
 }
 
 String Miasto::getNazwa() const {
@@ -17,4 +18,15 @@ String Miasto::getNazwa() const {
 
 punkt Miasto::getWspolrzedne() const {
 	return wspolrzedne;
+}
+
+LinkedList Miasto::getSasiedzi() const {
+	return sasiedzi;
+}
+
+//void Miasto::dodajSasiada(const Miasto& m, int odleglosc) {
+//	sasiedzi.add(m, odleglosc);
+//}
+void Miasto::dodajSasiada(String m, int odleglosc) {
+	sasiedzi.add(m, odleglosc);
 }

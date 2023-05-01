@@ -135,7 +135,7 @@
     <ClCompile Include="Wektor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BFS.h" />
+    <ClInclude Include="Lista.h" />
     <ClInclude Include="Mapa.h" />
     <ClInclude Include="Miasto.h" />
     <ClInclude Include="punkt.h" />
