@@ -150,7 +150,7 @@ String Mapa::znajdzNazweMiasta(int x, int y) {
 		}
 
 	}
-
+	return "";
 }
 
 String Mapa::nazwa(int x, int y) {
@@ -198,7 +198,7 @@ String Mapa::nazwa(int x, int y) {
 		}
 
 	}
-
+	return "";
 }
 
 punkt Mapa::znajdzPoczatek(int x, int y) {
@@ -345,7 +345,7 @@ void Mapa::wykonajPolecenia(int pytania, Wektor& miasta) {
 		i = 0;
 	}
 
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < pytania; i++) {
 		  najkrotszaDroga(polecenia[0][i], polecenia[1][i], miasta, polecenia[2][i]);
 	}
 
@@ -364,4 +364,65 @@ int Mapa::najkrotszaDroga(String miasto, String cel, Wektor& miasta, String typ)
 	dijkstra(miasta, miastIdx, celIdx, typ);
 
 	return 0;
+}
+
+void Mapa::dodajLoty(int liczbaLotnisk) {
+	String** lotniska;
+	lotniska = new String * [3];
+
+	for (int i = 0; i < 3; i++) {
+		lotniska[i] = new String[liczbaLotnisk];
+	}
+
+	String lot;
+	char z;
+
+	int i = 0, j = 0;
+
+	while (j < liczbaLotnisk) {
+
+		while (i < 3) {
+
+			z = getchar();
+
+			if (z == ' ') {
+
+				lotniska[i][j] = lot;
+				lot = "";
+				i++;
+
+			}
+			else if (z != '\n') {
+
+				lot.addChar(z);
+
+			}
+			else if (z == '\n' && i != 0) {
+
+				lotniska[i][j] = lot;
+				lot = "";
+				i++;
+
+			}
+
+		}
+
+		j++;
+		i = 0;
+	}
+
+	for (int i = 0; i < liczbaLotnisk; i++) {
+		int miastIdx = miasta.znjadzIdx(lotniska[0][i]);
+		int celIdx = miasta.znjadzIdx(lotniska[1][i]);
+
+		miasta.miasta[miastIdx].sasiedzi.dodaj(lotniska[1][i], lotniska[2][i].stringToInt(lotniska[2][i].getString()));
+	}
+
+	for (int i = 0; i < 3; i++) {
+		delete[] lotniska[i];
+	}
+
+	delete[] lotniska;
+	
+
 }

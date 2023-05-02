@@ -33,6 +33,7 @@ public:
 	void bfs(int w, int h, int startX, int startY, int idx);
 
 	void wykonajPolecenia(int pytania, Wektor& miasta);
+	void dodajLoty(int lotniska);
 	int najkrotszaDroga(String miasto, String cel, Wektor& miasta, String typ);
 
 	~Mapa();

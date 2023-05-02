@@ -6,17 +6,17 @@ using namespace std;
 
 int main()
 {
-	int w, h, q;
+	int w, h, q, k;
 	cin >> w >> h;
 
 	Mapa* mapaMiast = new Mapa(w, h);
 	mapaMiast->wczytajMape();
-	system("cls"); //usunac
-	mapaMiast->wypiszMape();
 	mapaMiast->znajdzMiasta();
 	mapaMiast->znajdzSasiadow();
+	cin >> k;
+	mapaMiast->dodajLoty(k);
 	cin >> q;
 	mapaMiast->wykonajPolecenia(q, mapaMiast->miasta);
-
+	
 	return 0;
 }

@@ -107,4 +107,12 @@ public:
         }
         return "";
     }
+
+    int stringToInt(const String& str) {
+        int result = 0;
+        for (int i = 0; i < str.length(); ++i) {
+                result = result * 10 + (str[i] - '0');
+        }
+        return result;
+    }
 };
