@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Mapa.h"
 
+
 using namespace std;
 
 int main()
@@ -13,10 +14,22 @@ int main()
 	mapaMiast->wczytajMape();
 	mapaMiast->znajdzMiasta();
 	mapaMiast->znajdzSasiadow();
+	//for (int i = 0; i < mapaMiast->miasta.getRozmiar(); i++) {
+	//	cout << mapaMiast->miasta.miasta[i].getNazwa().getString() << " sdds ";
+	//	cout << mapaMiast->miasta.miasta[i].sasiedzi.getRozmiar() << endl;
+	//	mapaMiast->miasta.miasta[i].sasiedzi.printList();
+	//}
 	cin >> k;
-	mapaMiast->dodajLoty(k);
+	
+	if(k > 0)
+		mapaMiast->dodajLoty(k);
+	
 	cin >> q;
+
 	mapaMiast->wykonajPolecenia(q, mapaMiast->miasta);
+
+
+
 	
 	return 0;
 }

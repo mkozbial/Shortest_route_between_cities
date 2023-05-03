@@ -60,25 +60,26 @@ void Wektor::clear() {
     liczbaMiast = 0;
 }
 
-int Wektor::znjadzIdx(punkt p) const {
-
+int Wektor::znajdzIdx(punkt p) const {
     for (int i = 0; i < liczbaMiast; i++) {
 
         if (miasta[i].getWspolrzedne().getX() == p.x && miasta[i].getWspolrzedne().getY() == p.y) {
             return i;
         }
     }
+
     return -1; 
 }
 
-int Wektor::znjadzIdx(String a) const {
-
+int Wektor::znajdzIdx(String a) const {
+   
     for (int i = 0; i < getRozmiar(); i++) {
 
         if (miasta[i].getNazwa() == a) {
             return i;
         }
     }
+    
     return -1; 
 }
 

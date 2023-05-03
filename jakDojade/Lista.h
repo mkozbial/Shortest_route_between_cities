@@ -16,12 +16,11 @@ public:
 };
 
 class Lista {
-private:
 
-    int size;
+    
 
 public:
-
+    int size;
     Node* head;
 
     Lista() {
@@ -32,7 +31,6 @@ public:
     void dodaj(String miasto, int dystans) {
 
         Node* newNode = new Node(miasto, dystans);
-
         if (head == nullptr) {
 
             head = newNode;
@@ -40,7 +38,9 @@ public:
         else {
 
             Node* curr = head;
-
+            if (curr == nullptr) {
+				return;
+			}
             while (curr->next != nullptr) {
 
                 if (curr->miasto == miasto) {
@@ -95,12 +95,15 @@ public:
         return size;
     }
 
-    //void printList() {
-    //    Node* curr = head;
-    //    while (curr != nullptr) {
-    //        std::cout << curr->miasto.getString() << ", dystans: " << curr->dystans << " ";
-    //        curr = curr->next;
-    //    }
-    //}
+    void printList() {
+        Node* curr = head;
+        //if (curr == nullptr) {
+        //    std::cout << "Lista jest pusta" << std::endl;
+        //}
+      while (curr != nullptr) {
+            std::cout << curr->miasto.getString() << ", dystans: " << curr->data << " ";
+            curr = curr->next;
+        }
+    }
 
 };

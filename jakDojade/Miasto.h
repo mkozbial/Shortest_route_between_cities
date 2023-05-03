@@ -8,11 +8,11 @@ using namespace std;
 class Miasto {
 private:
 
-	String nazwa;
-	punkt wspolrzedne;
+
 
 public:
-
+	String nazwa;
+	punkt wspolrzedne;
 	Lista sasiedzi;
 	Miasto();
 	Miasto(String nazwa, punkt wspolrzedne);

@@ -34,7 +34,7 @@ public:
 
 	void wykonajPolecenia(int pytania, Wektor& miasta);
 	void dodajLoty(int lotniska);
-	int najkrotszaDroga(String miasto, String cel, Wektor& miasta, String typ);
+	int najkrotszaDroga(String miasto, String cel, Wektor& miasta, int typ);
 
 	~Mapa();
 };

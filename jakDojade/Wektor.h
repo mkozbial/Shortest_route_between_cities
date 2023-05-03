@@ -20,6 +20,6 @@ public:
 
     Wektor& operator=(const Wektor& other);
 
-    int znjadzIdx(punkt p) const;
-    int znjadzIdx(String a) const;
+    int znajdzIdx(punkt p) const;
+    int znajdzIdx(String a) const;
 };

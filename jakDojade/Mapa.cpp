@@ -3,6 +3,7 @@
 #include "Dijkstra.h"
 
 
+
 Mapa::Mapa(int w, int h) {
 
 	this->w = w;
@@ -117,27 +118,41 @@ String Mapa::znajdzNazweMiasta(int x, int y) {
 
 			if (x + j >= 0 && x + j < w && y + i >= 0 && y + i < h) {
 
-				if (mapa[y + i][x + j] >= 'A' && mapa[y + i][x + j] <= 'Z') {
+				if (mapa[y + i][x + j] != '#' && mapa[y + i][x + j] != '.' && mapa[y + i][x + j] != '*') {
 
 					poczatek = znajdzPoczatek(x + j, y + i);
 					String nazwaMiasta;
 					newX = poczatek.x;
 					koniec = mapa[poczatek.y][newX];
+					nazwaMiasta.addChar(koniec);
 					k = 0;
 
-					while (true) {
+					while ((newX >= 0 && newX < w) && (mapa[y + i][newX] != '#' && mapa[y + i][newX] != '.' && mapa[y + i][newX] != '*')) {
+						k++;
+						newX = poczatek.x + k;
+						koniec = mapa[poczatek.y][newX];
+						if ((newX >= 0 && newX < w) && (mapa[y + i][newX] != '#' && mapa[y + i][newX] != '.' && mapa[y + i][newX] != '*')) {
+							nazwaMiasta.addChar(koniec);
+						}
+						else {
+							break;
+						}
+							
+					}
+
+					/*while (true) {
 
 						nazwaMiasta.addChar(koniec);
 						k++;
 						newX = poczatek.x + k;
 
-						if ((mapa[poczatek.y][newX] >= 'A' && mapa[poczatek.y][newX] <= 'Z') && (newX >= 0)) {
+						if ((newX >= 0) && (mapa[y + i][x + j] != '#' && mapa[y + i][x + j] != '.' && mapa[y + i][x + j] != '*')) {
 							koniec = mapa[poczatek.y][newX];
 						}
 						else {
 							break;
 						}
-					}
+					}*/
 
 					Miasto m(nazwaMiasta, wspolrzedne);
 					miasta.pushBack(m);
@@ -167,22 +182,21 @@ String Mapa::nazwa(int x, int y) {
 
 			if (x + j >= 0 && x + j < w && y + i >= 0 && y + i < h) {
 
-				if (mapa[y + i][x + j] >= 'A' && mapa[y + i][x + j] <= 'Z') {
+				if (mapa[y + i][x + j] != '#' && mapa[y + i][x + j] != '.' && mapa[y + i][x + j] != '*') {
 
 					poczatek = znajdzPoczatek(x + j, y + i);
 					String nazwaMiasta;
 					newX = poczatek.x;
 					koniec = mapa[poczatek.y][newX];
+					nazwaMiasta.addChar(koniec);
 					k = 0;
 
-					while (true) {
-
-						nazwaMiasta.addChar(koniec);
+					while ((newX >= 0 && newX < w) && (mapa[y + i][newX] != '#' && mapa[y + i][newX] != '.' && mapa[y + i][newX] != '*')) {
 						k++;
 						newX = poczatek.x + k;
-
-						if ((mapa[poczatek.y][newX] >= 'A' && mapa[poczatek.y][newX] <= 'Z') && (newX >= 0)) {
-							koniec = mapa[poczatek.y][newX];
+						koniec = mapa[poczatek.y][newX];
+						if ((newX >= 0 && newX < w) && (mapa[y + i][newX] != '#' && mapa[y + i][newX] != '.' && mapa[y + i][newX] != '*')) {
+							nazwaMiasta.addChar(koniec);
 						}
 						else {
 							break;
@@ -213,7 +227,7 @@ punkt Mapa::znajdzPoczatek(int x, int y) {
 		k--;
 		nowyX = x + k;
 
-		if ((mapa[y][nowyX] >= 'A' && mapa[y][nowyX] <= 'Z') && (nowyX >= 0)) {
+		if ((nowyX >= 0) && (mapa[y][nowyX] != '#' && mapa[y][nowyX] != '.' && mapa[y][nowyX] != '*')) {
 			poczatek = mapa[y][nowyX];
 		}
 		else {
@@ -282,7 +296,6 @@ void Mapa::bfs(int w, int h, int startX, int startY, int idx) {
 
 						p.dystans++;
 						miasta.miasta[idx].sasiedzi.dodaj(nazwa(x, y), p.dystans);
-
 					}
 				}
 
@@ -300,78 +313,71 @@ void Mapa::bfs(int w, int h, int startX, int startY, int idx) {
 }
 
 void Mapa::wykonajPolecenia(int pytania, Wektor& miasta) {
-
-	String** polecenia;
-	polecenia = new String * [3];
-
-	for (int i = 0; i < 3; i++) {
-		polecenia[i] = new String[pytania];
-	}
-
-	String pol;
+	String buffer, buffer2;
 	char z;
-
-	int i = 0, j = 0;
-
-	while (j < pytania) {
-
-		while (i < 3) {
-
+	int typ;
+	getchar();
+	for (int i = 0; i < pytania; i++) {
+		z = getchar();
+		while (z != ' ') {
+			buffer.addChar(z);
 			z = getchar();
-
-			if (z == ' ') {
-
-				polecenia[i][j] = pol;
-				pol = "";
-				i++;
-
-			}
-			else if (z != '\n') {
-
-				pol.addChar(z);
-
-			}
-			else if (z == '\n' && i != 0) {
-
-				polecenia[i][j] = pol;
-				pol = "";
-				i++;
-
-			}
-
+		}
+		z = getchar();
+		while (z != ' ') {
+			buffer2.addChar(z);
+			z = getchar();
 		}
 
-		j++;
-		i = 0;
+		cin >> typ;
+		z = getchar();
+		
+		najkrotszaDroga(buffer, buffer2, miasta, typ);
+		
+		buffer = "";
+		buffer2 = "";
+		
 	}
-
-	for (int i = 0; i < pytania; i++) {
-		  najkrotszaDroga(polecenia[0][i], polecenia[1][i], miasta, polecenia[2][i]);
-	}
-
-	for (int i = 0; i < 3; i++) {
-		delete[] polecenia[i];
-	}
-
-	delete[] polecenia;
 }
 
-int Mapa::najkrotszaDroga(String miasto, String cel, Wektor& miasta, String typ) {
+int Mapa::najkrotszaDroga(String miasto, String cel, Wektor& miasta, int typ) {
 
-	int miastIdx = miasta.znjadzIdx(miasto);
-	int celIdx = miasta.znjadzIdx(cel);
-
+	int miastIdx = miasta.znajdzIdx(miasto);
+	int celIdx = miasta.znajdzIdx(cel);
 	dijkstra(miasta, miastIdx, celIdx, typ);
 
 	return 0;
 }
 
 void Mapa::dodajLoty(int liczbaLotnisk) {
-	String** lotniska;
-	lotniska = new String * [3];
+	String buffer, buffer2;
+	char z;
+	int czas;
+	getchar();
+	for (int i = 0; i < liczbaLotnisk; i++) {
+		z = getchar();
+		while (z != ' ') {
+			buffer.addChar(z);
+			z = getchar();	
+		}
+		z = getchar();
+		while (z != ' ') {
+			buffer2.addChar(z);
+			z = getchar();
+		}
 
-	for (int i = 0; i < 3; i++) {
-		lotniska[i] = new String[liczbaLotnisk];
+		cin >> czas;
+		z = getchar();
+		int miastIdx = miasta.znajdzIdx(buffer);
+		miasta.miasta[miastIdx].sasiedzi.dodaj(buffer2, czas);
+		buffer = "";
+		buffer2 = "";
+	}
+	/*String** lotniska;
+	lotniska = new String * [liczbaLotnisk];
+
+	for (int i = 0; i < liczbaLotnisk; i++) {
+		lotniska[i] = new String[3];
 	}
 
 	String lot;
@@ -387,7 +393,7 @@ void Mapa::dodajLoty(int liczbaLotnisk) {
 
 			if (z == ' ') {
 
-				lotniska[i][j] = lot;
+				lotniska[j][i] = lot;
 				lot = "";
 				i++;
 
@@ -399,7 +405,7 @@ void Mapa::dodajLoty(int liczbaLotnisk) {
 			}
 			else if (z == '\n' && i != 0) {
 
-				lotniska[i][j] = lot;
+				lotniska[j][i] = lot;
 				lot = "";
 				i++;
 
@@ -412,17 +418,18 @@ void Mapa::dodajLoty(int liczbaLotnisk) {
 	}
 
 	for (int i = 0; i < liczbaLotnisk; i++) {
-		int miastIdx = miasta.znjadzIdx(lotniska[0][i]);
-		int celIdx = miasta.znjadzIdx(lotniska[1][i]);
+		int miastIdx = miasta.znjadzIdx(lotniska[i][0]);
+		int celIdx = miasta.znjadzIdx(lotniska[i][1]);
 
-		miasta.miasta[miastIdx].sasiedzi.dodaj(lotniska[1][i], lotniska[2][i].stringToInt(lotniska[2][i].getString()));
+		miasta.miasta[miastIdx].sasiedzi.dodaj(lotniska[i][1], lotniska[i][2].stringToInt(lotniska[i][2].getString()));
 	}
 
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < liczbaLotnisk; i++) {
 		delete[] lotniska[i];
 	}
 
-	delete[] lotniska;
+	delete[] lotniska;*/
+
 	
 
 }
